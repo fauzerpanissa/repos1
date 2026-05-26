@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from "next/server"
-import { Resend } from "resend"
-
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,8 +19,21 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Verificar se a API key está configurada
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY não configurada")
+      return NextResponse.json(
+        { error: "Configuração de email pendente. Por favor, entre em contato via WhatsApp ou email direto." },
+        { status: 500 }
+      )
+    }
+
+    // Import dinâmico do Resend para evitar erros quando não configurado
+    const { Resend } = await import("resend")
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
     // Enviar email via Resend
-    await resend.emails.send({
+    const { error: sendError } = await resend.emails.send({
       from: "Portfólio Florence <onboarding@resend.dev>",
       to: "florencemanoelescritora@gmail.com",
       replyTo: email,
@@ -45,6 +55,14 @@ export async function POST(request: NextRequest) {
         </div>
       `,
     })
+
+    if (sendError) {
+      console.error("Erro do Resend:", sendError)
+      return NextResponse.json(
+        { error: "Erro ao enviar mensagem. Tente novamente mais tarde." },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json({ success: true })
   } catch (error) {
