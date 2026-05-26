@@ -52,16 +52,16 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center lg:text-left max-w-xl"
           >
-            <p className="font-mono text-primary tracking-[0.3em] uppercase text-base mb-4">
+            <p className="font-mono text-primary tracking-[0.3em] uppercase text-base mb-4 text-center">
               Escritora &bull; Redatora &bull; Criadora de Conteúdo
             </p>
             
-            <h1 className="text-5xl md:text-7xl font-serif font-semibold text-foreground mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-semibold text-foreground mb-6 leading-tight">
               Florence<br />
               <span className="text-primary">Manoel</span>
             </h1>
             
-            <div className="font-mono text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-md">
+            <div className="font-mono text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed mb-8 max-w-md mx-auto lg:mx-0">
               <span className="text-primary">&ldquo;</span>
               Transformando ideias em palavras que conectam, emocionam e inspiram.
               <span className="text-primary">&rdquo;</span>
@@ -70,13 +70,13 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a 
                 href="#contato" 
-                className="px-8 pt-[19px] pb-3 bg-primary text-primary-foreground font-mono text-base tracking-wider hover:bg-primary/90 transition-colors"
+                className="px-6 sm:px-8 py-3 bg-primary text-primary-foreground font-mono text-sm sm:text-base tracking-wider hover:bg-primary/90 transition-colors text-center"
               >
                 Entre em Contato
               </a>
               <a 
                 href="#sobre" 
-                className="px-8 pt-[17px] pb-3 border-2 border-foreground/20 text-foreground font-mono text-base tracking-wider hover:border-primary hover:text-primary transition-colors"
+                className="px-6 sm:px-8 py-3 border-2 border-foreground/20 text-foreground font-mono text-sm sm:text-base tracking-wider hover:border-primary hover:text-primary transition-colors text-center"
               >
                 Conheça meu Trabalho
               </a>
